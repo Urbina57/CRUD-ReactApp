@@ -1,12 +1,13 @@
 body {
     background-color: #0D1117;
     color:  #c9d1d9;
-    height: 900px;
+    height: 1010px;
 }
 
 .header {
     padding: 5px;
     background-color: #161b22;
     display: flex;
+    box-shadow: 1px 8px 10px 2px rgba(0, 0, 0,0.1);
 }
 
