@@ -1,19 +1,23 @@
 import './App.css';
 import { Header } from "./components/Header";
 import { Form } from "./components/Form";
-import {Table} from "./components/Table";
+import { DataTable } from "./components/Table";
+import { useEffect, useState } from "react";
+
 
 function App() {
 
+
+
+    const data = JSON.parse(localStorage.getItem('data')) || []
+
+
   return (
-    <div >
+    <>
       <Header/>
-        <div>
           <Form />
-          <Table />
-        </div>
-    </div>
+          <DataTable data={data}/>
+    </>
   );
 }
-
 export default App;

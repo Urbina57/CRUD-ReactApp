@@ -2,35 +2,35 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import {useState} from "react";
 
+let nextId = 1
+
 export function Form() {
     const [name, setName] = useState()
     const [age, setAge] = useState()
 
-
     const handleSubmit = (e) => {
+        let savedData = JSON.parse(localStorage.getItem('data')) || []
+
+        let newData = {
+            id: nextId++,
+            name,
+            age
+        }
+        savedData.push(newData)
+        localStorage.setItem('data', JSON.stringify(savedData))
         e.preventDefault()
-
-        let localStorageData = localStorage.getItem('data') || []
-        console.log(localStorageData)
-
-
-
-        localStorage.setItem('data', JSON.stringify(name))
     }
 
      const styles = {
          contenedor: {
-             // border: '1px solid black',
              padding: '10px',
              marginTop: '25px',
              display: 'flex',
              justifyContent: 'center'
          },
-
          footer: {
              marginTop: '12px'
          }
-
      }
 
     return (
@@ -38,6 +38,7 @@ export function Form() {
             <form onSubmit={handleSubmit}>
                 <p>Name:</p>
                 <TextField
+                    autoComplete={'off'}
                     name={'name'}
                     onChange={ (event) => setName(event.target.value)}
                     size={"small"}
